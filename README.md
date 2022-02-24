@@ -1,42 +1,27 @@
-# Learn Terraform - Use Control Tower Account Factory for Terraform
-
-This is a companion repository for the [Provision and Manage Accounts with
-Control Tower Account Factory for Terraform
-tutorial](https://learn.hashicorp.com/tutorials/terraform/aws-control-tower-aft)
-tutorial on HashiCorp Learn.
-
-This repository contains boilerplate configuration for defining global
-customizations to use with the Account Factory for Terraform
-module. The README below and the template files in this repository were
-provided by AWS.
-
-To create your global customizations, replicate this repository
-and extend the Terraform configuration.
-
-## Introduction
+# Introduction
 This repo stores the Terraform and API helpers for the Global Customizations. Global Customizations are used to customize all provisioned accounts with customer defined resources. The resources can be created through Terraform or through Python, leveraging the API helpers. The customization run is parameterized at runtime.
 
-## Usage
+# Usage
 To leverage Global Customizations, populate this repo as per the instructions below.
 
-### Terraform
+## Terraform
 AFT provides Jinja templates for Terraform backend and providers. These render at the time Terraform is applied. If needed, additional providers can be defined by creating a providers.tf file.
 
 To create Terraform resources, provide your own Terraform files (ex. main.tf, variables.tf, etc) with the resources you would like to create, placing them in the 'terraform' directory.
 
-### API Helpers
+## API Helpers
 The purpose of API helpers is to perform actions that cannot be performed within Terraform.
 
-#### Python
+### Python
 The api_helpers/python folder contains a requirements.txt, where you can specify libraries/packages to be installed via PIP.
 
-#### Bash
+### Bash
 This is where you define what runs before/after Terraform, as well as the order the Python scripts execute, along with any command line parameters. These bash scripts can be extended to perform other actions, such as leveraging the AWS CLI or performing additional/custom Bash scripting.
 
 - pre-api-helpers.sh - Actions to execute prior to running Terraform.
 - post-api-helpers.sh - Actions to execute after running Terraform.
 
-#### Sample api-helpers.sh
+### Sample api-helpers.sh
 
 Sample #1 - Using AWS CLI to query for resources, save to a variable, and then pass to a script. In the example below, all running instances are queried, stopped, and started using AWS CLI and custom Python scritpts.
 ```
