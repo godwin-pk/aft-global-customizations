@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "test_s3_gpk0001" {
-  bucket = "test_s3_gpk0001"
+resource "aws_s3_bucket" "gpk199901" {
+  bucket = "gpk199901"
 
   tags = {
     Name        = "test"
